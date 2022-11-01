@@ -20,7 +20,6 @@ import (
 	"crypto"
 	"crypto/ecdsa"
 	"crypto/rsa"
-	"crypto/x509"
 	"encoding/pem"
 	"errors"
 	"fmt"
@@ -296,7 +295,7 @@ func X509KeyPair(certPEMBlock, keyPEMBlock []byte) (Certificate, error) {
 }
 
 func parsePrivateKey(der []byte) (crypto.PrivateKey, error) {
-	if key, err := x509.ParsePKCS1PrivateKey(der); err == nil {
+	/*if key, err := x509.ParsePKCS1PrivateKey(der); err == nil {
 		return key, nil
 	}
 	if key, err := x509.ParsePKCS8PrivateKey(der); err == nil {
@@ -306,7 +305,7 @@ func parsePrivateKey(der []byte) (crypto.PrivateKey, error) {
 		default:
 			return nil, errors.New("tls: found unknown private key type in PKCS#8 wrapping")
 		}
-	}
+	}*/
 	if key, err := gmx509.ParsePKCS8UnecryptedPrivateKey(der); err == nil {
 		return key, nil
 	}

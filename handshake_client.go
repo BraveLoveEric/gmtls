@@ -680,7 +680,8 @@ func (hs *clientHandshakeState) sendFinished(out []byte) error {
 
 // tls11SignatureSchemes contains the signature schemes that we synthesise for
 // a TLS <= 1.1 connection, based on the supported certificate types.
-var tls11SignatureSchemes = []SignatureScheme{ECDSAWithP256AndSHA256, ECDSAWithP384AndSHA384, ECDSAWithP521AndSHA512, PKCS1WithSHA256, PKCS1WithSHA384, PKCS1WithSHA512, PKCS1WithSHA1}
+// var tls11SignatureSchemes = []SignatureScheme{ECDSAWithP256AndSHA256, ECDSAWithP384AndSHA384, ECDSAWithP521AndSHA512, PKCS1WithSHA256, PKCS1WithSHA384, PKCS1WithSHA512, PKCS1WithSHA1}
+var tls11SignatureSchemes = []SignatureScheme{ECDHE_SM4_CBC_SM3, ECC_SM4_CBC_SM3}
 
 const (
 	// tls11SignatureSchemesNumECDSA is the number of initial elements of
